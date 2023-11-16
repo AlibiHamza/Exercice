@@ -29,17 +29,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Email Notification') {
-            steps {
-                // Configurer les notifications par e-mail en cas d'échec
-                emailext subject: 'Échec du pipeline Jenkins',
-                          body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.',
-                          to: 'hamzaalibi95@gmail.com',
-                          attachLog: true
-            }
-        }
-    }
+    
 post {
     failure {
         script {
