@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Compiler le code Java
-                sh 'javac -sourcepath src -d build src/*.java'
+                sh 'javac -sourcepath src -d build app.java'
             }
         }
 
