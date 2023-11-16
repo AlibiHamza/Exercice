@@ -41,14 +41,15 @@ pipeline {
         }
     }
 
-    post {
-        // Actions à effectuer après l'exécution du pipeline
-        failure {
-            // Envoyer une notification en cas d'échec
+post {
+    failure {
+        script {
+            try {
                 emailext subject: 'Échec du pipeline Jenkins',
                           body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.',
                           to: 'hamzaalibi95@gmail.com',
                           attachLog: true
-        }
-    }
+            } catch (Exception e) {
+                echo "Erreur
+
 }
