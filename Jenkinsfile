@@ -29,9 +29,8 @@ pipeline {
                 }
             }
         }
-    }
     
-post {
+stage ('post') {
     failure {
         script {
             try {
@@ -47,4 +46,5 @@ post {
     }
 }
 
+}
 }
