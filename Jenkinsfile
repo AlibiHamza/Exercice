@@ -29,7 +29,7 @@ pipeline {
         stage('Email Notification') {
             steps {
                 script {
-                  emailext attachLog: true, body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.', subject: 'Echec du pipeline Jenkins', to: 'hamzaalibi95@gmail.com'
+                  emailext (attachLog: true, body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.', subject: 'Echec du pipeline Jenkins', to: 'hamzaalibi95@gmail.com')
                 }
             }
         }
