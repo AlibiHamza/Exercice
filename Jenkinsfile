@@ -25,21 +25,16 @@ pipeline {
                 }
             }
         }
-    }
 
-    post {
+    stage('post') {
         failure {
             script {
-                try {
-                    emailext subject: 'Échec du pipeline Jenkins',
-                              body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.',
-                              to: 'hamzaalibi95@gmail.com',
-                              attachLog: true
-                } catch (Exception e) {
-                    echo "Erreur lors de l'envoi de l'e-mail : ${e.message}"
-                    e.printStackTrace()
-                }
+                emailext subject: 'Échec du pipeline Jenkins',
+                          body: 'Il y a eu un échec dans le pipeline Jenkins. Veuillez vérifier et résoudre le problème.',
+                          to: 'hamzaalibi95@gmail.com',
+                          attachLog: true
             }
         }
     }
+}
 }
