@@ -35,18 +35,18 @@ pipeline {
                         subject: 'Echec du pipeline Jenkins',
                         to: 'hamzaalibi95@gmail.com',
                         mimeType: 'text/html', // Définissez le type de contenu en HTML si nécessaire
-                        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+                        recipientProviders: [[$class: 'CulpritsRecipientProvider']],
                         // Ajoutez les informations d'authentification si nécessaire
-                        // ,replyTo: "hamzaalibi95@gmail.com",
-                        // attachBuildLog: true,
-                        // compressBuildLog: true,
+                        replyTo: "hamzaalibi95@gmail.com",
+                        attachBuildLog: true,
+                        compressBuildLog: true,
                         // from: 'hamzaalibi95@gmail.com,
-                        // mailer: 'smtp',
-                        // smtpHost: 'smtp.gmail.com',
-                        // smtpPort: '465',
-                        // smtpAuth: true,
-                        // smtpUser: 'hamzaalibi95@gmail.com',
-                        // smtpPassword: 'gxkk gcle jwlc pror'
+                        mailer: 'smtp',
+                        smtpHost: 'smtp.gmail.com',
+                        smtpPort: '465',
+                        smtpAuth: true,
+                        smtpUser: 'hamzaalibi95@gmail.com',
+                        smtpPassword: 'gxkk gcle jwlc pror'
                     )
                 }
             }
