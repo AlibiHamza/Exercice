@@ -16,19 +16,19 @@ pipeline {
             }
         }
 
-      stage('Test') {
-            steps {
-                script {
-                    // Utiliser JUnitCore pour exécuter les tests
-                    def junitResults = sh(script: 'java -cp build org.junit.runner.JUnitCore VotreClasseDeTest', returnStatus: true)
-                    
-                    // Vérifier si les tests ont réussi
-                    if (junitResults != 0) {
-                        error 'Les tests ont échoué. Veuillez vérifier les résultats.'
-                    }
-                }
+    stage('Test') {
+    steps {
+        script {
+            // Utiliser JUnit pour exécuter les tests
+            def junitResults = sh(script: 'java -cp build org.junit.runner.JUnitCore App.java', returnStatus: true)
+            
+            // Vérifier si les tests ont réussi
+            if (junitResults != 0) {
+                error 'Les tests ont échoué. Veuillez vérifier les résultats.'
             }
         }
+    }
+}
 
         stage('Email Notification') {
             steps {
