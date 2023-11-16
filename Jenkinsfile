@@ -40,7 +40,6 @@ pipeline {
             }
         }
     }
-
 post {
     failure {
         script {
@@ -50,6 +49,11 @@ post {
                           to: 'hamzaalibi95@gmail.com',
                           attachLog: true
             } catch (Exception e) {
-                echo "Erreur
+                echo "Erreur lors de l'envoi de l'e-mail : ${e.message}"
+                e.printStackTrace()
+            }
+        }
+    }
+}
 
 }
