@@ -16,10 +16,17 @@ pipeline {
             }
         }
 
-        stage('Test') {
+      stage('Test') {
             steps {
-                // Exécuter les tests (par exemple, avec JUnit)
-                sh 'java -cp build org.junit.runner.JUnitCore VotreClasseDeTest'
+                script {
+                    // Utiliser JUnitCore pour exécuter les tests
+                    def junitResults = sh(script: 'java -cp build org.junit.runner.JUnitCore VotreClasseDeTest', returnStatus: true)
+                    
+                    // Vérifier si les tests ont réussi
+                    if (junitResults != 0) {
+                        error 'Les tests ont échoué. Veuillez vérifier les résultats.'
+                    }
+                }
             }
         }
 
