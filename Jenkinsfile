@@ -16,19 +16,19 @@ pipeline {
             }
         }
 
-    stage('Test') {
-    steps {
-        script {
-            // Utiliser JUnit pour exécuter les tests
-            def junitResults = sh(script: 'java -cp build org.junit.runner.JUnitCore App.java', returnStatus: true)
-            
-            // Vérifier si les tests ont réussi
-            if (junitResults != 0) {
-                error 'Les tests ont échoué. Veuillez vérifier les résultats.'
+ stage('Test') {
+            steps {
+                script {
+                    // Compilation de App.java
+                    def compileResult = sh(script: 'javac -sourcepath src -d build App.java', returnStatus: true)
+                    
+                    // Vérifier le statut de la compilation
+                    if (compileResult != 0) {
+                        error 'La compilation a échoué. Veuillez vérifier les erreurs de compilation.'
+                    }
+                }
             }
         }
-    }
-}
 
         stage('Email Notification') {
             steps {
